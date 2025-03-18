@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邀请函 🎉</title>
+    <style>
+        body {
+            background-color: #ffdde1;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        /* 草莓熊图片 */
+        .strawberry-bear {
+            width: 150px;
+            margin-top: 20px;
+        }
+
+        /* 标题动画 */
+        h1 {
+            font-size: 28px;
+            color: #d24d57;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* 文字内容 */
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        /* 按钮样式 */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: #e74c3c;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 15px;
+            animation: bounce 1.5s infinite;
+        }
+
+        /* 轮播图 */
+        .slideshow-container {
+            position: relative;
+            max-width: 300px;
+            margin: 20px auto;
+        }
+
+        .slides {
+            display: none;
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* 气球动画 */
+        .balloon {
+            position: absolute;
+            width: 40px;
+            opacity: 0.7;
+            animation: floatUp 5s linear infinite;
+        }
+
+        /* 关键帧动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 草莓熊图片 -->
+    <img src="https://i.imgur.com/0nDImsX.png" alt="草莓熊" class="strawberry-bear">
+
+    <!-- 邀请函标题 -->
+    <h1>🎉 邀请函 🎉</h1>
+    <p>亲爱的朋友，欢迎来参加我的生日派对！</p>
+    <p>📅 日期：2025年4月18日</p>
+    <p>📍 地点：6, Laluan Mewah Indah 3</p>
+
+    <!-- 照片轮播 -->
+    <div class="slideshow-container">
+        <img class="slides" src="https://via.placeholder.com/300x200/ff6666/ffffff?text=Happy+Birthday">
+        <img class="slides" src="https://via.placeholder.com/300x200/ffcc99/ffffff?text=Party+Time">
+        <img class="slides" src="https://via.placeholder.com/300x200/99ff99/ffffff?text=Fun+Moments">
+    </div>
+
+    <!-- 查看地图按钮 -->
+    <a href="https://www.google.com/maps" class="button">查看地图</a>
+
+    <!-- 气球动画 -->
+    <script>
+        // 照片轮播效果
+        let slideIndex = 0;
+        function showSlides() {
+            let slides = document.getElementsByClassName("slides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 2000);
+        }
+        showSlides();
+
+        // 生成气球动画
+        function createBalloon() {
+            let balloon = document.createElement("img");
+            balloon.src = "https://i.imgur.com/LrT1lwF.png";
+            balloon.className = "balloon";
+            balloon.style.left = Math.random() * 100 + "vw";
+            balloon.style.animationDuration = (Math.random() * 3 + 2) + "s";
+            document.body.appendChild(balloon);
+
+            setTimeout(() => {
+                balloon.remove();
+            }, 5000);
+        }
+
+        setInterval(createBalloon, 1000);
+    </script>
+
+</body>
+</html>
